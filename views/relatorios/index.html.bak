@@ -1,0 +1,11 @@
+{{extend 'layout.html'}}
+
+
+{{=table}}
+
+{{ for x in range(1,10): }}
+    {{=BR()}}
+{{pass}}
+<center>
+    <h2><a href="{{=URL('relatorios', 'index.pdf')}} target="_blank"">Exportar para PDF</a></h2>
+</center>

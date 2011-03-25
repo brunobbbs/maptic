@@ -1,0 +1,86 @@
+<html>
+
+ <head>
+     <meta charset="utf-8" />
+     <title>MapTIC - Outras TICs - {{=escola[0].nome}} - {{=request.now.year}}</title>
+ </head>
+ <body>
+     <center><h1>MapTIC / Mapeamento - Uso das TIC nas Escolas {{=request.now.year}}</h1></center>
+     <center><h2>Dados da Escola:</h2></center>
+     <table border="0.1" cellpadding="2">
+         <tr>
+             <td align="center"><strong>Escola</strong></td>
+             <td align="center">{{=escola[0].nome}}</td>
+             <td align="center"><strong>Endereço</strong></td>
+             <td colspan="3" align="center">{{=escola[0].endereco}}</td>
+         </tr>
+         <tr>
+             <td align="center"><strong>Telefone</strong></td>
+             <td align="center">{{=escola[0].telefone}}</td>
+             <td align="center"><strong>Código INEP</strong></td>
+             <td align="center">{{=escola[0].cod_inep}}</td>
+             <td align="center"><strong>Email</strong></td>
+             <td align="center">{{=email_escola[0].email}}</td>
+         </tr>
+         <tr>
+             <td align="center"><strong>DRE</strong></td>
+             <td align="center">{{=escola[0].dre}}</td>
+             <td align="center"><strong>NTE</strong></td>
+             <td align="center">{{=escola[0].nte}}</td>
+             <td align="center"><strong>Turnos de Funcionamento</strong></td>
+             <td align="center">{{=", ".join([x for x in escola[0].turno])}}</td>
+         </tr>
+     </table>
+     
+     <center><h1>MapTIC / Outras TICs / {{=escola[0].nome}}</h1></center>
+
+     <table border="0.1" cellpadding="1">
+             <tr>
+                 <td align="center"><strong>Antena parabólica ou digital</strong></td>
+                 <td align="center"><strong>Aparelho DVD</strong></td>
+                 <td align="center"><strong>Caixa 1 do DVD escola (50 mídias)</strong></td>
+                 <td align="center"><strong>Caixa 2 do DVD escola (50 mídias)</strong></td>
+                 <td align="center"><strong>Caixa 3 do DVD escola (60 mídias)</strong></td>
+                 <td align="center"><strong>Câmera filmadora digital</strong></td>
+             </tr>
+             <tr>
+                 <td align="center">{{=maptic[0].parabolica}} | <strong>Quantidade: </strong> {{=maptic[0].qtd_parabolica or 0}}</td>
+                 <td align="center">{{=maptic[0].dvd}} | <strong>Quantidade:</strong> {{=maptic[0].qtd_dvd or 0}}</td>
+                 <td align="center">{{=maptic[0].dvdescola1}}</td>
+                 <td align="center">{{=maptic[0].dvdescola2}}</td>
+                 <td align="center">{{=maptic[0].dvdescola3}}</td>
+                 <td align="center">{{=maptic[0].filmadora}} | <strong>Quantidade:</strong> {{=maptic[0].qtd_filmadora or 0}}</td>
+             </tr>
+     </table>
+     <br />
+     <table border="0.1" cellpadding="1">
+             <tr>
+                 <td align="center"><strong>Máquina fotográfica digital</strong></td>
+                 <td align="center"><strong>Lousa digital</strong></td>
+                 <td align="center"><strong>Projetor multimídia</strong></td>
+                 <td align="center"><strong>Aparelho de som</strong></td>
+                 <td align="center"><strong>Aparelho de TV</strong></td>
+             </tr>
+             <tr>
+                 <td align="center">{{=maptic[0].fotografica}} | <strong>Quantidade:</strong> {{=maptic[0].qtd_fotografica or 0}}</td>
+                 <td align="center">{{=maptic[0].lousa}} | <strong>Quantidade:</strong> {{=maptic[0].qtd_lousa or 0}}</td>
+                 <td align="center">{{=maptic[0].projetor}} | <strong>Quantidade:</strong> {{=maptic[0].qtd_projetor or 0}}</td>
+                 <td align="center">{{=maptic[0].som}} | <strong>Quantidade:</strong> {{=maptic[0].qtd_som or 0}}</td>
+                 <td align="center">{{=maptic[0].tv}} | <strong>Quantidade:</strong> {{=maptic[0].qtd_tv or 0}}</td>
+             </tr>
+     </table>
+     <br />
+     <table border="0.1" cellpadding="1">
+             <tr>
+                 <td align="center"><strong>Equipamento de rádio (recepção)</strong></td>
+                 <td align="center"><strong>Equipamento de rádio (transmissão)</strong></td>
+                 <td align="center"><strong>Observações</strong></td>
+             </tr>
+             <tr>
+                 <td align="center">{{=maptic[0].radio_r}}</td>
+                 <td align="center">{{=maptic[0].radio_t}}</td>
+                 <td align="center">{{=maptic[0].observacoes}}</td>
+             </tr>
+     </table>
+ </body>
+</html>

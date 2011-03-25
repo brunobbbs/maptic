@@ -1,0 +1,32 @@
+{{ extend 'layout.html' }}
+
+<center>
+
+    {{ if escola: }}
+        <h1>{{=escola[0].escola.nome}}</h1>
+        <h2>Escolha o relatório abaixo</h2>
+
+        <br />
+
+        <h3>
+            {{if escola[0].infrati == True:}}
+                <a href="{{=URL('relatorios', 'gerar', args=['infrati'], vars={'escola':escola[0].escola})}}">Infraestrutura de TI</a>
+            {{ pass }}
+            <br />
+            {{ if escola[0].infraescola == True: }}
+                <a href="{{=URL('relatorios', 'gerar', args=['infraescola'], vars={'escola':escola[0].escola})}}">Infraestrutura da Escola</a>
+            {{ pass }}
+            <br />
+            {{ if escola[0].outrastics == True: }}
+                <a href="{{=URL('relatorios', 'gerar', args=['outrastics'], vars={'escola':escola[0].escola})}}">Outras TICs</a>
+            {{ pass }}
+            <br /><br />
+            {{ if (escola[0].infrati == True) and (escola[0].infraescola == True) and (escola[0].outrastics == True): }}
+            <a href="{{=URL('relatorios', 'gerar', args=['geral'], vars={'escola':escola[0].escola})}}">Relatório Geral</a>
+            {{ pass }}
+        </h3>
+    {{ else: }}
+        <h2>Essa escola ainda não preencheu nenhum formulário</h2>
+        <h2>{{=A('Voltar', _href=URL('relatorios', 'index'))}}</h2>
+    {{ pass }}
+</center>

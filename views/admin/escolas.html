@@ -1,0 +1,86 @@
+{{ extend 'layout.html' }}
+
+<script type="text/javascript">
+  jQuery(document).ready(function(){
+    //Fancybox
+    jQuery(".atividade").fancybox({
+      'width': '65%',
+      'height': '65%',
+      'autoScale': false,
+      'transictionIn': 'none',
+      'transictionOut': 'none',
+      'type': 'iframe'
+    });
+
+    jQuery(".usuario").fancybox({
+      'width': '30%',
+      'height': '60%',
+      'autoScale': false,
+      'transictionIn': 'none',
+      'transictionOut': 'none',
+      'type': 'iframe'
+    });
+
+    //DataTable
+    jQuery("#table_escolas").dataTable();
+  });
+</script>
+
+{{ if escolas: }}
+<center>
+    <h2>Lista de Escolas Cadastradas</h2>
+</center>
+<table class="display" id="table_escolas">
+    <thead>
+        <tr>
+            <th>Escola</th>
+            <th>Endereço</th>
+            <th>Telefone</th>
+            <th>Código INEP</th>
+            <th>DRE</th>
+            <th>NTE</th>
+            <th>Turnos de Funcionamento</th>
+        </tr>
+    </thead>
+    <tbody>
+        {{ for escola in escolas: }}
+            <tr>
+                <td><a href="{{=URL('admin', 'escolas', args=['editar', escola.id])}}">{{=escola.nome}}</a></td>
+                <td>{{=escola.endereco}}</td>
+                <td>{{=escola.telefone}}</td>
+                <td>{{=escola.cod_inep}}</td>
+                <td>{{=escola.dre}}</td>
+                <td>{{=escola.nte}}</td>
+                <td>{{=", ".join([escola for escola in escola.turno])}}</td>
+            </tr>
+        {{ pass }}
+    </tbody>
+</table>
+
+{{ pass }}
+
+{{ if editar_escola: }}
+<center>
+    <h2>Editar Escola</h2>
+
+    {{=editar_escola}}
+
+    <h2><a href="{{=URL('admin', 'escolas', args=['lista'])}}">Voltar</a></h2>
+
+</center>
+
+{{ pass }}
+
+{{ if nova_escola: }}
+
+<center>
+    <h2>Cadastrar Nova Escola</h2>
+
+    {{=nova_escola}}
+
+    <h2><a href="{{=URL('admin', 'escolas', args=['lista'])}}">Voltar</a></h2>
+</center>
+
+{{ pass }}
+
+<center><h2><a href="{{=URL('admin', 'escolas', args=['nova'])}}">Nova Escola</a></h2></center>

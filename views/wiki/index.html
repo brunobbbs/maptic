@@ -1,0 +1,39 @@
+{{ extend 'layout.html' }}
+
+<center>
+    <h1>Ajuda do Sistema</h1>
+</center>
+
+<!-- Se houver algum artigo cadastrado no sistema, lista todos -->
+{{ if artigos: }}
+
+<ul>
+    {{ for artigo in artigos: }}
+    <li>
+        <h3><a href="{{=URL('wiki', 'ver', args=[artigo.id])}}">{{=artigo.titulo}}</a></h3>
+        <!-- Se o usuário for administrador, ele pode editar ou deletar um artigo -->
+        {{ if auth.has_membership(1): }}
+        <a href="{{=URL('wiki', 'editar', args=[artigo.id])}}">[Editar]</a> |
+        <a href="{{=URL('wiki', 'deletar', args=[artigo.id])}}">[Deletar]</a>
+        {{ pass }}
+    </li>
+    {{ pass }}
+</ul>
+
+<!-- Se o usuário for administrador, ele pode adicionar um novo artigo -->
+    {{ if auth.has_membership(1): }}
+        <br />
+        <center><h2><a href="{{=URL('wiki', 'adicionar')}}">Adicionar novo Artigo</a></h2></center>
+    {{ pass }}
+
+<!-- Se não houver nenhum artigo cadastrado, retorna uma mensagem na tela -->
+{{ else: }}
+    <center><h2>Nenhum artigo cadastrado</h2></center>
+
+    <!-- Se o usuário for administrador, ele pode adicionar um novo artigo -->
+    {{ if auth.has_membership(1): }}
+        <br />
+        <center><h2><a href="{{=URL('wiki', 'adicionar')}}">Adicionar novo Artigo</a></h2></center>
+    {{ pass }}
+
+{{ pass }}

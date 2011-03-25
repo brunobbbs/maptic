@@ -1,0 +1,22 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="ru">
+    <head>
+        <title>
+            {{=response.title or request.application}}
+        </title>
+        {{response.files.append(URL('static','plugin_layouts/superfish.js'))}}
+        {{response.files.append(URL('static','plugin_layouts/fancybox/jquery.fancybox-1.3.1.js'))}}
+        {{response.files.append(URL('static','plugin_layouts/fancybox/jquery.fancybox-1.3.1.css'))}}
+        {{response.files.append(URL('static','plugin_layouts/fancybox/jquery.mousewheel-3.0.2.pack.js'))}}
+        {{response.files.append(URL('static','plugin_layouts/datatable/jquery.dataTables.min.js'))}}
+        {{response.files.append(URL('static','plugin_layouts/datatable/jquery.dataTables.css'))}}
+        {{include 'web2py_ajax.html'}}
+        <link rel="stylesheet" href="{{=URL(request.application, 'static', 'css/editar.css')}}" type="text/css" />
+    </head>
+    <body>
+        <center>
+            <h2>Editar Usuário</h2>
+            {{=usuario}}
+        </center>
+    </body>
+</html>

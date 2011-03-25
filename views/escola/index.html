@@ -1,0 +1,44 @@
+{{ extend 'layout.html' }}
+
+{{ if not status: }} {{ redirect(URL('escola', 'index')) }} {{ pass }}
+
+<center>
+    <h1>MapTIC 0.1b</h1>
+
+    <br />
+
+    <h2>Bem vindo ao MapTIC. Aqui você poderá manter as TICs de sua escola sempre
+        atualizadas junto ao NTE de sua região.</h2>
+
+    <h2>Para começar, escolha um dos questionários abaixo:</h2>
+</center>
+
+<br />
+
+<ul>
+    <li>
+        <h2>Infraestrutura de TI</h2>
+        - {{ if status[0].infrati == False: }}
+                <a href="{{=URL('escola', 'formulario', args=['infrati'])}}">Preencher</a>
+          {{ else: }}
+                <a href="{{=URL('escola', 'formulario', args=['infrati', 'atualizar'])}}">Atualizar</a>
+          {{ pass }}
+    </li>
+
+    <li>
+        <h2>Infraestrutura da escola</h2>
+        - {{ if status[0].infraescola == False: }}
+                <a href="{{=URL('escola', 'formulario', args=['infraescola'])}}">Preencher</a>
+          {{ else: }}
+                <a href="{{=URL('escola', 'formulario', args=['infraescola', 'atualizar'])}}">Atualizar</a>
+          {{ pass }}
+    </li>
+    <li>
+        <h2>Outras TICs</h2>
+        - {{ if status[0].outrastics == False: }}
+                <a href="{{=URL('escola', 'formulario', args=['outrastics'])}}">Preencher</a>
+          {{ else: }}
+                <a href="{{=URL('escola', 'formulario', args=['outrastics', 'atualizar'])}}">Atualizar</a>
+          {{ pass }}
+    </li>
+</ul>

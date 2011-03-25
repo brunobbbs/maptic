@@ -1,0 +1,17 @@
+{{extend 'layout.html'}}
+
+<center>
+    <h1>Relatórios</h1>
+    <h2>Selecione a escola desejada e clique em Exibir</h2>
+
+    <form method="get" action="escola">
+        <select name="escola">
+            <option value="zero" name="escola">-- Selecione a Escola --</option>
+            {{ for e in escola: }}
+                <option value="{{=e.id}}">{{=e.nome}}</option>
+            {{ pass }}
+        </select>
+        <br />
+        <input type="submit" value="Exibir" />
+    </form>
+</center>

@@ -1,0 +1,105 @@
+<html>
+
+ <head>
+     <meta charset="utf-8" />
+     <title>MapTIC - Infraestrutura de Tecnologia - {{=escola[0].nome}} - {{=request.now.year}}</title>
+ </head>
+ <body>
+     <center><h1>MapTIC / Mapeamento - Uso das TIC nas Escolas {{=request.now.year}}</h1></center>
+     <center><h2>Dados da Escola:</h2></center>
+     <table border="0.1" cellpadding="2">
+         <tr>
+             <td align="center"><strong>Escola</strong></td>
+             <td align="center">{{=escola[0].nome}}</td>
+             <td align="center"><strong>Endereço</strong></td>
+             <td colspan="3" align="center">{{=escola[0].endereco}}</td>
+         </tr>
+         <tr>
+             <td align="center"><strong>Telefone</strong></td>
+             <td align="center">{{=escola[0].telefone}}</td>
+             <td align="center"><strong>Código INEP</strong></td>
+             <td align="center">{{=escola[0].cod_inep}}</td>
+             <td align="center"><strong>Email</strong></td>
+             <td align="center">{{=email_escola[0].email}}</td>
+         </tr>
+         <tr>
+             <td align="center"><strong>DRE</strong></td>
+             <td align="center">{{=escola[0].dre}}</td>
+             <td align="center"><strong>NTE</strong></td>
+             <td align="center">{{=escola[0].nte}}</td>
+             <td align="center"><strong>Turnos de Funcionamento</strong></td>
+             <td align="center">{{=", ".join([x for x in escola[0].turno])}}</td>
+         </tr>
+     </table>
+     
+     <center><h1>MapTIC / Infraestrutura de TI / {{=escola[0].nome}}</h1></center>
+
+     <table border="0.1" cellpadding="1">
+             <tr>
+                 <td align="center"><strong>Possui laboratório de informática?</strong></td>
+                 <td align="center"><strong>Recebeu equipamentos novos em 2009/2010?</strong></td>
+                 <td align="center"><strong>Quantidade de computadores no(s) laboratório(s) de informática</strong></td>
+                 <td align="center"><strong>Origem dos equipamentos do laboratório de informática</strong></td>
+             </tr>
+             <tr>
+                 <td align="center">{{=maptic[0].labinfo}}</td>
+                 <td align="center">{{=maptic[0].e_novo}}</td>
+                 <td align="center">{{=maptic[0].num_comp}}</td>
+                 <td align="center">{{=maptic[0].origem}}</td>
+             </tr>
+     </table>
+     <br />
+     <table border="0.1" cellpadding="1">
+             <tr>
+                 <td align="center"><strong>Ano de implementação do laboratório de informática</strong></td>
+                 <td align="center"><strong>Quantidade de computadores funcionando</strong></td>
+                 <td align="center"><strong>Sistema Operacional</strong></td>
+                 <td align="center"><strong>Configuração predominante nos computadores</strong></td>
+             </tr>
+             <tr>
+                 <td align="center">{{=maptic[0].ano_imp}}</td>
+                 <td align="center">{{=maptic[0].qtd_func}}</td>
+                 <td align="center">{{=maptic[0].so}}</td>
+                 <td align="center">{{=maptic[0].config}}</td>
+             </tr>
+     </table>
+     <br />
+     <table border="0.1" cellpadding="1">
+             <tr>
+                 <td align="center"><strong>Quantidade de computadores na sala dos professores</strong></td>
+                 <td align="center"><strong>Quantidade de computadores na secretaria</strong></td>
+                 <td align="center"><strong>Rede lógica no laboratório</strong></td>
+                 <td align="center"><strong>Rede lógica na sala dos professores</strong></td>
+                 <td align="center"><strong>Rede lógica na secretaria</strong></td>
+             </tr>
+             <tr>
+                 <td align="center">{{=maptic[0].qtd_pc_professor}}</td>
+                 <td align="center">{{=maptic[0].qtd_pc_secretaria}}</td>
+                 <td align="center">{{=maptic[0].rede_logica_lab}} | <strong>Nº de Pontos:</strong> {{=maptic[0].ponto_rede_lab or 0}}</td>
+                 <td align="center">{{=maptic[0].rede_logica_prof}} | <strong>Nº de Pontos:</strong> {{=maptic[0].ponto_rede_prof or 0}}</td>
+                 <td align="center">{{=maptic[0].rede_logica_sec}} | <strong>Nº de Pontos:</strong> {{=maptic[0].ponto_rede_sec or 0}}</td>
+             </tr>
+     </table>
+     <br />
+     <table border="0.1" cellpadding="1">
+             <tr>
+                 <td align="center"><strong>Internet</strong></td>
+                 <td align="center"><strong>Em quais locais da escola há acesso à internet?</strong></td>
+                 <td align="center"><strong>Possui rede wireless?</strong></td>
+                 <td align="center"><strong>Condição de funcionamento do laboratório</strong></td>
+                 <td align="center"><strong>Possui linha telefônica para o laboratório?</strong></td>
+             </tr>
+             <tr>
+                 {{ if maptic[0].internet: }}
+                 <td align="center">{{=maptic[0].internet}}</td>
+                 {{ else: }}
+                 <td align="center">{{=maptic[0].internet_outro}}</td>
+                 {{ pass }}
+                 <td align="center">{{=maptic[0].local_internet}}</td>
+                 <td align="center">{{=maptic[0].wifi}}</td>
+                 <td align="center">{{=maptic[0].condicao_lab}}</td>
+                 <td align="center">{{=maptic[0].tel_lab}}</td>
+             </tr>
+     </table>
+ </body>
+</html>

@@ -1,0 +1,22 @@
+{{ extend 'layout.html' }}
+
+<center><h1>Ajuda do Sistema</h1></center>
+
+<center>
+    <h2>{{=detalhes[0].titulo}}</h2>
+</center>
+
+<br />
+
+<p>"{{=XML(detalhes[0].conteudo, sanitize=True)}}</p>
+
+<br />
+
+<center>
+    <h2>
+        <a href="{{=URL('wiki', 'index')}}">Início</a>
+        {{ if auth.has_membership(1): }}
+        | <a href="{{=URL('wiki', 'editar', args=[detalhes[0].id])}}">Editar</a>
+        {{ pass }}
+    </h2>
+</center>
